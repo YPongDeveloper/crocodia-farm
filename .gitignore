@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+__pycache__/
+*.pyc
+AGENTS.md
+CLAUDE.md
+*.log
+.DS_Store
+Thumbs.db
+.env*
