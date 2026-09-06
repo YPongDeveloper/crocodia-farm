@@ -59,7 +59,7 @@ export default async function LocaleLayout({
     <div lang={raw} className={mitr.variable} style={{ fontFamily: "var(--font-body)" }}>
       <script
         dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang=${JSON.stringify(raw)}`,
+          __html: `document.documentElement.lang=${JSON.stringify(raw)};document.documentElement.classList.add('js')`,
         }}
       />
       <Nav locale={raw} d={d} />
