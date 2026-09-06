@@ -1,5 +1,6 @@
 import Pic from "@/components/Pic";
 import Reveal from "@/components/Reveal";
+import Accordion from "@/components/Accordion";
 import { getDict } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { crocShowTimes, elephantShowTimes, feedingPrices, photoPrices } from "@/i18n/data";
@@ -31,6 +32,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const locale = raw;
   const d = getDict(locale);
   const t = (x: { th: string; en: string; zh: string }) => x[locale];
+  const items = (n: number) => `${n} ${t({ th: "รายการ", en: "items", zh: "项" })}`;
 
   const activities: { key: string; img: string; price: string; note?: string }[] = [
     { key: "miniTrain", img: "act-train", price: "฿40 / ฿30", note: locale === "zh" ? "约10分钟 · 学校团体10泰铢" : locale === "en" ? "~10 min · school groups THB 10" : "~10 นาที · คณะนักเรียน 10 บาท" },
@@ -115,55 +117,63 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       {/* feeding + photo */}
       <section className="section section--leaf">
         <div className="wrap">
-          <div className="grid grid--2 svc-split">
+          <Reveal className="center">
+            <span className="kicker">🧺 {t({ th: "ราคาบริการเสริม", en: "Add-on prices", zh: "加购项目价格" })}</span>
+            <h2 className="h2">{t({ th: "กดเลือกหมวดเพื่อดูราคา", en: "Tap a category to see prices", zh: "点击分类查看价格" })}</h2>
+          </Reveal>
+          <div className="grid grid--2 svc-split" style={{ marginTop: 26 }}>
             <Reveal className="reveal--left">
-              <span className="kicker">🥕 {d.services.feedingTitle}</span>
-              <h2 className="h2">{d.services.feedingSub}</h2>
-              <div className="tablewrap" style={{ marginTop: 18 }}>
-                <table className="price-table">
-                  <thead>
-                    <tr>
-                      <th>{d.services.feedingTitle}</th>
-                      <th />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {feedingPrices.map(([key, price, flag]) => (
-                      <tr key={key}>
-                        <td>{t(feedingNames[key])}</td>
-                        <td>
-                          {price > 0 ? <b>฿{price}</b> : <b>{t({ th: "สอบถาม", en: "Ask staff", zh: "咨询" })}</b>}
-                          {flag === "weekend" && <span className="flag">{d.common.weekendOnly}</span>}
-                        </td>
+              <h2 className="sr-only">{d.services.feedingTitle}</h2>
+              <Accordion title={`🥕 ${d.services.feedingTitle}`} count={items(feedingPrices.length)}>
+                <p className="acc__desc">{d.services.feedingSub}</p>
+                <div className="tablewrap">
+                  <table className="price-table">
+                    <thead>
+                      <tr>
+                        <th>{d.services.feedingTitle}</th>
+                        <th />
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {feedingPrices.map(([key, price, flag]) => (
+                        <tr key={key}>
+                          <td>{t(feedingNames[key])}</td>
+                          <td>
+                            {price > 0 ? <b>฿{price}</b> : <b>{t({ th: "สอบถาม", en: "Ask staff", zh: "咨询" })}</b>}
+                            {flag === "weekend" && <span className="flag">{d.common.weekendOnly}</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Accordion>
             </Reveal>
             <Reveal className="reveal--right" delay={120}>
-              <span className="kicker">📸 {d.services.photoTitle}</span>
-              <h2 className="h2">{d.services.photoSub}</h2>
-              <div className="tablewrap" style={{ marginTop: 18 }}>
-                <table className="price-table">
-                  <thead>
-                    <tr>
-                      <th>{d.services.photoTitle}</th>
-                      <th />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {photoPrices.map(([key, price]) => (
-                      <tr key={key}>
-                        <td>{t(photoNames[key])}</td>
-                        <td>
-                          <b>฿{price}</b>
-                        </td>
+              <h2 className="sr-only">{d.services.photoTitle}</h2>
+              <Accordion title={`📸 ${d.services.photoTitle}`} count={items(photoPrices.length)}>
+                <p className="acc__desc">{d.services.photoSub}</p>
+                <div className="tablewrap">
+                  <table className="price-table">
+                    <thead>
+                      <tr>
+                        <th>{d.services.photoTitle}</th>
+                        <th />
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {photoPrices.map(([key, price]) => (
+                        <tr key={key}>
+                          <td>{t(photoNames[key])}</td>
+                          <td>
+                            <b>฿{price}</b>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Accordion>
             </Reveal>
           </div>
         </div>
@@ -199,46 +209,50 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         <div className="wrap">
           <div className="grid grid--2 svc-split">
             <Reveal>
-              <span className="kicker">🍜 {d.services.foodTitle}</span>
-              <h2 className="h2">{d.services.foodSub}</h2>
-              <div className="tablewrap" style={{ marginTop: 18 }}>
-                <table className="price-table">
-                  <thead>
-                    <tr>
-                      <th>{d.services.foodTitle}</th>
-                      <th />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {food.map((f) => (
-                      <tr key={f.en}>
-                        <td>{t(f)}</td>
-                        <td>
-                          <b>฿{f.price}</b>
-                        </td>
+              <h2 className="sr-only">{d.services.foodTitle}</h2>
+              <Accordion title={`🍜 ${d.services.foodTitle}`} count={items(food.length)}>
+                <p className="acc__desc">{d.services.foodSub}</p>
+                <div className="tablewrap">
+                  <table className="price-table">
+                    <thead>
+                      <tr>
+                        <th>{d.services.foodTitle}</th>
+                        <th />
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {food.map((f) => (
+                        <tr key={f.en}>
+                          <td>{t(f)}</td>
+                          <td>
+                            <b>฿{f.price}</b>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Accordion>
             </Reveal>
             <Reveal delay={120}>
-              <span className="kicker">🎒 {d.services.schoolTitle}</span>
-              <h2 className="h2">{d.services.schoolSub}</h2>
-              <div className="tablewrap" style={{ marginTop: 18 }}>
-                <table className="price-table">
-                  <tbody>
-                    {d.services.schoolTiers.map((s) => (
-                      <tr key={s.label}>
-                        <td>{s.label}</td>
-                        <td>
-                          <b>฿{s.price}</b> / {d.common.perPerson}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <h2 className="sr-only">{d.services.schoolTitle}</h2>
+              <Accordion title={`🎒 ${d.services.schoolTitle}`} count={`${d.services.schoolTiers.length} ${t({ th: "ระดับ", en: "levels", zh: "级别" })}`}>
+                <p className="acc__desc">{d.services.schoolSub}</p>
+                <div className="tablewrap">
+                  <table className="price-table">
+                    <tbody>
+                      {d.services.schoolTiers.map((s) => (
+                        <tr key={s.label}>
+                          <td>{s.label}</td>
+                          <td>
+                            <b>฿{s.price}</b> / {d.common.perPerson}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Accordion>
               <p className="note" style={{ marginTop: 14 }}>
                 🚂 {d.services.schoolExtra}
                 <br />
