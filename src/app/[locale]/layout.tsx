@@ -4,7 +4,6 @@ import { isLocale, locales } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
 import { Mitr } from "next/font/google";
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import AntiCopy from "@/components/AntiCopy";
 import { notFound } from "next/navigation";
 import "../globals.css";
@@ -64,7 +63,6 @@ export default async function LocaleLayout({
       />
       <Nav locale={raw} d={d} />
       <main>{children}</main>
-      <Footer locale={raw} d={d} />
       <AntiCopy />
     </div>
   );

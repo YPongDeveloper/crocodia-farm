@@ -258,3 +258,15 @@ export const activityNames: Record<string, T> = {
   airGun:    { th: "ยิงปืนอัดลม", en: "Air gun shooting", zh: "气枪射击" },
   framed:    { th: "รูปถ่ายใส่กรอบ", en: "Framed souvenir photo", zh: "相框纪念照" },
 };
+
+export const pointTexts: Record<string, { name: T }> = {
+  bears:    { name: { th: "หมีขอ · หมีควาย", en: "Sun & Black Bears", zh: "马来熊·亚洲黑熊" } },
+  monkey:   { name: { th: "เกาะลิง · ชะนี", en: "Monkey Hill & Gibbon", zh: "猴山·长臂猿" } },
+  reptile:  { name: { th: "โซนสัตว์เลื้อยคลาน", en: "Reptile Zone", zh: "爬行动物区" } },
+  lake:     { name: { th: "สระกลาง · ปลาสวาย", en: "Central Lake & Fish", zh: "中央湖·鱼类" } },
+  breed:    { name: { th: "บ่อเพาะพันธุ์จระเข้", en: "Crocodile Breeding Ponds", zh: "鳄鱼繁育池" } },
+  crocshow: { name: { th: "สนามแสดงจับจระเข้", en: "Croc Show Arena", zh: "捕鳄表演场" } },
+  jump:     { name: { th: "จระเข้กระโดด · ตกจระเข้", en: "Croc Jumping & Fishing", zh: "跳鳄·垂钓池" } },
+  birds:    { name: { th: "สวนนก · นกกระจอกเทศ", en: "Bird Garden & Ostriches", zh: "鸟园·鸵鸟" } },
+  farm:     { name: { th: "ฟาร์มเด็ก · คาปิบาร่า", en: "Kids' Farm & Capybara", zh: "儿童农场·水豚" } },
+};

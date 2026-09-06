@@ -239,4 +239,36 @@ export const photoPrices: [string, number][] = [
   ["bigPython", 200],
 ];
 
+/* ------------------------- map explorer points ------------------------- */
+/* Positions are in the 0–1000 grid of the cleaned map image. */
+
+export interface MapPoint {
+  id: string;
+  pos: [number, number];
+  /** species keys shown as photos when this point is opened */
+  sp: string[];
+  /** key into pointTexts (names.ts) for merged areas; otherwise first species name is used */
+  nameKey?: string;
+}
+
+export const mapPoints: MapPoint[] = [
+  { id: "peacock",  pos: [300, 200], sp: ["peacock"] },
+  { id: "lion",     pos: [330, 252], sp: ["lion"] },
+  { id: "hippo",    pos: [312, 296], sp: ["hippo"] },
+  { id: "bears",    pos: [318, 332], sp: ["sunBear", "blackBear"], nameKey: "bears" },
+  { id: "binturong",pos: [330, 368], sp: ["binturong"] },
+  { id: "tiger",    pos: [332, 428], sp: ["tiger", "tigerCub"] },
+  { id: "chimp",    pos: [372, 470], sp: ["chimp"] },
+  { id: "monkey",   pos: [408, 315], sp: ["gibbon", "macaque"], nameKey: "monkey" },
+  { id: "reptile",  pos: [410, 195], sp: ["iguana", "snake", "turtle"], nameKey: "reptile" },
+  { id: "elephant", pos: [522, 268], sp: ["elephant", "elephant2"] },
+  { id: "lake",     pos: [452, 430], sp: ["swaiFish", "koiFish", "arapaima"], nameKey: "lake" },
+  { id: "breed",    pos: [620, 555], sp: ["crocodile", "albinoCroc"], nameKey: "breed" },
+  { id: "golden",   pos: [575, 592], sp: ["goldenCroc"] },
+  { id: "crocshow", pos: [378, 665], sp: ["crocodile"], nameKey: "crocshow" },
+  { id: "jump",     pos: [370, 762], sp: ["saltwaterCroc", "oldCroc"], nameKey: "jump" },
+  { id: "birds",    pos: [390, 552], sp: ["macaw", "cockatoo"], nameKey: "birds" },
+  { id: "farm",     pos: [505, 558], sp: ["capybara", "miniPig", "alpaca", "goat", "deer", "rabbit", "sheep"], nameKey: "farm" },
+];
+
 export const homeGallery = ["act-train", "show-wrestling", "a-hippo", "act-boat", "a-tiger", "hero-scenic", "a-alpaca", "act-jump"];
