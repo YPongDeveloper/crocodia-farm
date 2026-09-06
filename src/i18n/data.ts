@@ -271,4 +271,41 @@ export const mapPoints: MapPoint[] = [
   { id: "farm",     pos: [505, 558], sp: ["capybara", "miniPig", "alpaca", "goat", "deer", "rabbit", "sheep"], nameKey: "farm" },
 ];
 
+/** per-species marker positions for the paw toggle (same 0-1000 grid as mapPoints) */
+export const animalSpots: { sp: string; pos: [number, number] }[] = [
+  { sp: "peacock",      pos: [295, 192] },
+  { sp: "lion",         pos: [362, 222] },
+  { sp: "hippo",        pos: [295, 282] },
+  { sp: "sunBear",      pos: [362, 288] },
+  { sp: "blackBear",    pos: [295, 352] },
+  { sp: "binturong",    pos: [362, 356] },
+  { sp: "tiger",        pos: [295, 422] },
+  { sp: "tigerCub",     pos: [362, 424] },
+  { sp: "chimp",        pos: [298, 488] },
+  { sp: "macaque",      pos: [402, 300] },
+  { sp: "gibbon",       pos: [436, 334] },
+  { sp: "iguana",       pos: [395, 188] },
+  { sp: "snake",        pos: [442, 210] },
+  { sp: "turtle",       pos: [398, 248] },
+  { sp: "elephant",     pos: [518, 258] },
+  { sp: "elephant2",    pos: [562, 290] },
+  { sp: "swaiFish",     pos: [440, 420] },
+  { sp: "koiFish",      pos: [480, 448] },
+  { sp: "arapaima",     pos: [436, 468] },
+  { sp: "crocodile",    pos: [622, 582] },
+  { sp: "albinoCroc",   pos: [668, 550] },
+  { sp: "goldenCroc",   pos: [566, 600] },
+  { sp: "saltwaterCroc",pos: [362, 756] },
+  { sp: "oldCroc",      pos: [396, 778] },
+  { sp: "macaw",        pos: [378, 546] },
+  { sp: "cockatoo",     pos: [430, 574] },
+  { sp: "capybara",     pos: [494, 546] },
+  { sp: "goat",         pos: [536, 538] },
+  { sp: "miniPig",      pos: [506, 574] },
+  { sp: "alpaca",       pos: [550, 570] },
+  { sp: "deer",         pos: [458, 528] },
+  { sp: "rabbit",       pos: [470, 584] },
+  { sp: "sheep",        pos: [518, 592] },
+];
+
 export const homeGallery = ["act-train", "show-wrestling", "a-hippo", "act-boat", "a-tiger", "hero-scenic", "a-alpaca", "act-jump"];
