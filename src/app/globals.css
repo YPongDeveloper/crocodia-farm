@@ -268,6 +268,14 @@ table.price-table { width: 100%; border-collapse: collapse; font-size: 0.98rem; 
 .price-table td b { color: var(--ink); font-weight: 600; }
 .price-table tr:hover td { background: #fcfbf5; }
 .flag { display: inline-block; font-size: 0.78rem; color: #b3541e; background: var(--accent-soft); border-radius: 999px; padding: 1px 9px; margin-left: 8px; white-space: nowrap; }
+@media (max-width: 900px) {
+  .svc-split { grid-template-columns: minmax(0, 1fr) !important; }
+  .price-table td:last-child { white-space: normal; }
+  .price-table .flag { display: block; width: fit-content; max-width: 100%; margin: 6px 0 2px auto; white-space: normal; text-align: center; }
+}
+@media (max-width: 640px) {
+  .price-table th, .price-table td { padding: 10px 12px; font-size: 0.94rem; }
+}
 
 /* ---------- gallery strip ---------- */
 .masonry { columns: 3 260px; column-gap: 14px; }

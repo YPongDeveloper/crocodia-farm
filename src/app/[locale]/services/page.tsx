@@ -72,7 +72,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
             <span className="kicker">⏰ {d.services.showsTitle}</span>
             <h2 className="h2">{d.services.showsSub}</h2>
           </Reveal>
-          <div className="grid grid--2" style={{ marginTop: 30 }}>
+          <div className="grid grid--2 svc-split" style={{ marginTop: 30 }}>
             <Reveal>
               <article className="card" style={{ height: "100%" }}>
                 <div className="card__media">
@@ -115,7 +115,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       {/* feeding + photo */}
       <section className="section section--leaf">
         <div className="wrap">
-          <div className="grid grid--2">
+          <div className="grid grid--2 svc-split">
             <Reveal className="reveal--left">
               <span className="kicker">🥕 {d.services.feedingTitle}</span>
               <h2 className="h2">{d.services.feedingSub}</h2>
@@ -197,7 +197,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       {/* food + school */}
       <section className="section section--soft">
         <div className="wrap">
-          <div className="grid grid--2">
+          <div className="grid grid--2 svc-split">
             <Reveal>
               <span className="kicker">🍜 {d.services.foodTitle}</span>
               <h2 className="h2">{d.services.foodSub}</h2>
